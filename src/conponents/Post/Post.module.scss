@@ -1,0 +1,54 @@
+.Post{
+    width: 80%;
+    height: 100%;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+    margin-top: 50px;
+    border: 5px solid #b7b7b752;
+    border-radius: 10px;
+    padding: 20px;
+
+    .Post_viver{
+        width: 100%;
+        height: 100%;
+
+        display: flex;
+        flex-direction: column;
+        justify-content: flex-start;
+        align-items: center;
+
+        .header_post{
+            display: flex;
+            justify-content: flex-start;
+            align-items: center;
+
+            width: 100%;
+
+            img{
+                width: 70px;
+                height: 60px;
+                border-radius: 50%;
+                margin-right: 20px;
+            }
+
+            p{
+                font-size: 18px;
+                font-family: sans-serif;
+                font-weight: 600;
+            }
+        }
+
+        .footer_post{
+            width: 100%;
+            height: 100%;
+
+            p{
+                font-size: 18px;
+                font-family: sans-serif;
+            }
+        }
+    }
+}
