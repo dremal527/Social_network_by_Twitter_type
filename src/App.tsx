@@ -6,7 +6,7 @@ import Profile from './conponents/Profile/Profile';
 import Messages from './conponents/messages/Messages';
 import { Route, Routes } from 'react-router-dom';
 
-function App() {
+function App(props:any) {
   return (
     <div className="App">
       <Header />
@@ -14,8 +14,8 @@ function App() {
         <Menu />
 
         <Routes>
-          <Route path='/' element={<Profile />} />
-          <Route path='/messages/*' element={<Messages />} />
+          <Route path='/' element={<Profile postsData={props.postsData}/>} />
+          <Route path='/messages/*' element={<Messages MessageData={props.MessageData} userData={props.userData} />} />
         </Routes>
       </div>
     </div>

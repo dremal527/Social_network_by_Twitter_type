@@ -21,28 +21,16 @@ const Message = (props: any) => {
   return message_datas;
 }
 
-let userData = [
-  { id_user: 1, name: "Dima" },
-  { id_user: 2, name: "Oleg" },
-  { id_user: 3, name: "Misha" },
-];
-
-let MessageData = [
-  {id: 1, message : "Hello"},
-  {id: 2, message : "Hey how are ypu ?"},
-  {id: 3, message : "I'm fine, and you ?"},
-];
-
-export default function Messages() {
+export default function Messages(props:any) {
   return (
     <div className={styles.Messages}>
       <div className={styles.Messages_item}>
         <div className={styles.users}>
-          <Users userData={userData} />
+          <Users userData={props.userData} />
         </div>
 
         <div className={styles.dialog}>
-          <Message messageData={MessageData} />
+          <Message messageData={props.MessageData} />
         </div>
       </div>
     </div>
