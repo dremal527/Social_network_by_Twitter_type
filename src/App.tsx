@@ -14,8 +14,8 @@ function App(props:any) {
         <Menu />
 
         <Routes>
-          <Route path='/' element={<Profile postsData={props.postsData}/>} />
-          <Route path='/messages/*' element={<Messages MessageData={props.MessageData} userData={props.userData} />} />
+          <Route path='/' element={<Profile />} />
+          <Route path='/messages/*' element={<Messages />} />
         </Routes>
       </div>
     </div>
