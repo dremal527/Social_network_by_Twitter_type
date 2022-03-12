@@ -2,7 +2,7 @@ import React, {useState} from 'react';
 import styles from './Messages.module.scss';
 import { NavLink } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
-import {addMessageReducer} from '../../store/reducer';
+import {addMessageReducer} from '../../Redux/reducerMessage';
 
 const Users = (props: any) => {
 
@@ -41,8 +41,8 @@ export default function Messages(props:any) {
 
   const dispatch = useDispatch();
 
-  const MessageData = useSelector((state:any) => state.MessageData);
-  const userData = useSelector((state:any) => state.userData);
+  const MessageData = useSelector((state:any) => state.message.MessageData);
+  const userData = useSelector((state:any) => state.message.userData);
 
   const AddMessage = () =>{
     let payload = {id: Math.random(),message: NewMessage, person: Math.round(Math.random())};

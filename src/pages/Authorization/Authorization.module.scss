@@ -1,0 +1,80 @@
+.auth_block{
+    text-align: center;
+}
+
+.form{
+    width: 500px;
+    height: 350px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-evenly;
+    border: 2px solid #80808047;
+    border-radius: 12px;
+    box-shadow: 8px 8px 2px 1px #80808047;
+
+    .form_child{
+        width: 80%;
+        display: flex;
+        flex-direction: column;
+        text-align: left;
+        
+        label{
+            font-size: 18px;
+            font-family: Arial, Helvetica, sans-serif;
+            margin-bottom: 5px;
+        }
+
+        input{
+            height: 30px;
+            outline: rgb(29, 155, 240);
+            font-size: 18px;
+            font-family: Arial, Helvetica, sans-serif;
+        }
+
+    }
+}
+
+.Login_btn{
+    width: 200px;
+    height: 50px;
+    border-color: rgba(0, 0, 0, 0);
+    background-color: rgb(15, 20, 25);
+    color: white;
+    font-size: 18px;
+    font-family: Arial, Helvetica, sans-serif;
+    border-radius: 12px;
+    cursor: pointer;
+    transition: .2s ease;
+
+    &:hover{
+        background-color: rgba(15, 20, 25, 0.7);
+    }
+
+    &:disabled{
+        background-color: rgba(15, 20, 25, 0.7);
+        cursor: not-allowed;
+    }
+}
+
+.registration_arae{
+    font-size: 15px;
+    font-family: Arial, Helvetica, sans-serif;
+
+    a{
+        text-decoration: none;
+        color: rgb(29, 155, 240);
+        transition: .2s ease;
+        
+        &:hover{
+            text-decoration: underline;
+        }
+    }
+}
+
+.ErrorValidate{
+    color: red;
+    font-size: 18px;
+    margin-top: 5px;
+    font-family: Arial, Helvetica, sans-serif;
+}

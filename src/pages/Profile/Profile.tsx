@@ -1,20 +1,24 @@
 import React, {useState, useRef} from 'react';
 import styles from './Profile.module.scss';
-import Post from '../Post/Post';
+import Post from '../../conponents/Post/Post';
 import { useDispatch, useSelector } from 'react-redux';
-import {addPostReducer} from '../../store/reducer';
+import {addPostReducer} from '../../Redux/reducerPost';
 
 export default function Profile(props:any) {
     const dispatch = useDispatch();
-    const postsData = useSelector( (state:any) => state.postsData);
+    const postsData = useSelector( (state:any) => state.posts.postsData);
 
     const [newTweet, SetNewTweet] = useState({});
 
     const textArea_newPost:any = useRef('');
 
     const ADD_POST = () =>{
-        dispatch(addPostReducer(newTweet));
-        textArea_newPost.current.value = '';
+        if(textArea_newPost.current.value.trim() !== ''){
+            dispatch(addPostReducer(newTweet));
+            textArea_newPost.current.value = '';
+        }else{
+            textArea_newPost.current.value = '';
+        }
     }
 
     return (
