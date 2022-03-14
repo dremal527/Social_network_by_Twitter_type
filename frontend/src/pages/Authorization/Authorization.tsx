@@ -64,8 +64,32 @@ export default function Authorization(){
     }
 
 
-    function LoginForm ():any{
-        dispatch(set_authorize(true));
+    async function LoginForm (){
+        let user_data = {
+            Email: Email,
+            Password: Password,
+        }
+
+        let query_authorize = await fetch('http://localhost/back_twitter/login.php',{
+            method: 'POST',
+            headers:{
+                'X-Requested-With': 'XMLHttpRequest',
+                'content-type': 'application/x-www-form-urlencoded'
+            },
+            body: JSON.stringify(user_data),
+        })
+        .then(response => response.json());
+
+        console.log(query_authorize);
+
+        if(query_authorize.status){
+            let date = new Date(Date.now() +60*60*24*30);
+            document.cookie = `id=${query_authorize.data.id}, hash=${query_authorize.data.hash}; expires=${date}`;
+            dispatch(set_authorize(true));
+        }else{
+            console.log(query_authorize.error);
+        }
+        
     }
 
     return(

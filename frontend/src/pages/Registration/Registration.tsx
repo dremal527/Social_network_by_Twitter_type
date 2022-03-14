@@ -126,8 +126,24 @@ export default function Registration(){
     }
 
 
-    function LoginForm ():any{
-        // dispatch();
+    async function RegistratedForm (){
+        let user_info = {
+            Name: Name,
+            Surname: Surname,
+            Email: Email,
+            Password: Password,
+        }
+
+        let register_query = await fetch('http://localhost/back_twitter/register.php', {
+            method: 'POST',
+            headers: {
+                'X-Requested-With': 'XMLHttpRequest',
+                'content-type': 'application/x-www-form-urlencoded'
+            },
+            body: JSON.stringify(user_info),
+        })
+        .then(respone => respone.json());
+        console.log(register_query);
     }
 
     return(
@@ -166,7 +182,7 @@ export default function Registration(){
                     {(ErrorTwicePassword) ? <span className={styles.ErrorValidate}>{ErrorTwicePasswordText}</span> : null}
                 </div>
 
-                <button disabled={ValidForm} type="button" className={styles.Login_btn} onClick={LoginForm}>Войти</button>
+                <button disabled={ValidForm} type="button" className={styles.Login_btn} onClick={RegistratedForm}>Войти</button>
 
                 <div className={styles.registration_arae}>
                     <span>Уже есть учетная запись? </span> <NavLink to="/">Войти</NavLink>    

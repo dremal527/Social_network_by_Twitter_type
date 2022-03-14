@@ -7,6 +7,9 @@ import {addPostReducer} from '../../Redux/reducerPost';
 export default function Profile(props:any) {
     const dispatch = useDispatch();
     const postsData = useSelector( (state:any) => state.posts.postsData);
+    const User_name = useSelector((state:any) => state.authorize.user_name);
+    const User_surname = useSelector((state:any) => state.authorize.user_surname);
+    const User_FIO = User_name + ' ' +User_surname;
 
     const [newTweet, SetNewTweet] = useState({});
 
@@ -26,7 +29,7 @@ export default function Profile(props:any) {
             <div className={styles.tweet_textarea}>
                 <textarea ref={textArea_newPost} value={textArea_newPost.current.value} name="" id="" onChange={ 
                     (elem:any) => {
-                        SetNewTweet({ name: 'Карл Марков', text_post: elem.target.value});
+                        SetNewTweet({ name: User_FIO, text_post: elem.target.value});
                     } 
                 } placeholder='Что нового ?'></textarea>
 
