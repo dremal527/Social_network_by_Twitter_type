@@ -1,18 +1,8 @@
-export function getFIO (id:any, part_FIO:string){
+import {SetFIO} from '../Redux/reducerAuthorize';
 
-    // let query_datas = fetch('http://localhost/back_twitter/give_data.php',{
-    //     method: 'POST',
-    //     headers: {
-    //         'X-Requested-With': 'XMLHttpRequest',
-    //         'content-type': 'application/x-www-form-urlencoded'
-    //     },
-    //     body: JSON.stringify({id: id, part_FIO: part_FIO})
-    // })
-    // .then(response => response.json());
+export async function getFIO (id:any, part_FIO:string){
 
-    // return query_datas
-
-    return fetch('http://localhost/back_twitter/give_data.php',{
+    let query_datas = await fetch('http://localhost/back_twitter/give_data.php',{
         method: 'POST',
         headers: {
             'X-Requested-With': 'XMLHttpRequest',
@@ -20,14 +10,7 @@ export function getFIO (id:any, part_FIO:string){
         },
         body: JSON.stringify({id: id, part_FIO: part_FIO})
     })
-    .then(function(response) {
-        return response.json();
-    })
-    .then(function(data) {
-        var userid = JSON.stringify(data);
-        // console.log(userid);
-        return userid;
-    })
+        .then( (response:any) => response.json());
 
-    // return test;
+    SetFIO(query_datas,part_FIO);
 }
