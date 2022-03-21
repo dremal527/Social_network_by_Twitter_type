@@ -1,8 +1,8 @@
 import {createStore, combineReducers} from 'redux'
-import { reducerPost } from './reducerPost';
-import { reducerMessage } from './reducerMessage';
+import { reducerPost } from './reducers/reducerPost';
+import { reducerMessage } from './reducers/reducerMessage';
 import { composeWithDevTools } from 'redux-devtools-extension';
-import { reducerAuthorize } from './reducerAuthorize';
+import { reducerAuthorize } from './reducers/reducerAuthorize';
 
 const rooReducer = combineReducers({
     posts: reducerPost,

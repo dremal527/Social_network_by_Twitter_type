@@ -2,7 +2,7 @@ import React, {useState} from 'react';
 import styles from './Messages.module.scss';
 import { NavLink } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
-import {addMessageReducer} from '../../Redux/reducerMessage';
+import {addMessageReducer} from '../../Redux/reducers/reducerMessage';
 
 const Users = (props: any) => {
 

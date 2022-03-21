@@ -1,4 +1,4 @@
-import {SetFIO} from '../Redux/reducerAuthorize';
+import {SetFIO} from '../Redux/reducers/reducerAuthorize';
 
 export async function getFIO (id:any, part_FIO:string){
 

@@ -1,8 +1,10 @@
 import React, { useEffect, useState } from "react";
-import { NavLink } from "react-router-dom";
+import { NavLink, useNavigate } from "react-router-dom";
 import styles from './Registration.module.scss';
 
 export default function Registration(){
+
+    const Navigate = useNavigate();
 
     const [Name, SetName] = useState('');
     const [ErrorName, SetErrorName] = useState(false);
@@ -25,6 +27,12 @@ export default function Registration(){
     const [ErrorTwicePasswordText, SetErrorTwicePasswordText] = useState('');
 
     const [ValidForm, SetValidForm] = useState(false);
+
+    const [ErrorRegister, SetErrorRegister] = useState('');
+    const [Check_ErrorRegister, SetCheck_ErrorRegister] = useState(false);
+
+    const SuccesText = 'Вы успешно зарегистрировались';
+    const [SuccesRegistrater, SetSuccesRegistrater] = useState(false);
 
     useEffect(()=>{
         if(Email && Password && Name && Surname && TwicePassword){
@@ -143,11 +151,31 @@ export default function Registration(){
             body: JSON.stringify(user_info),
         })
         .then(respone => respone.json());
-        console.log(register_query);
+        console.log(register_query)
+        if(register_query.error !== false){
+            SetSuccesRegistrater(false);
+            SetErrorRegister(register_query.error);
+            SetCheck_ErrorRegister(true);
+            setTimeout(()=>SetCheck_ErrorRegister(false), 3000);
+        }else{
+            SetSuccesRegistrater(true);
+            SetCheck_ErrorRegister(true);
+            setTimeout(()=>{
+                Navigate('/');
+            }, 3000);
+        }
     }
 
     return(
         <div className={styles.registration_block}>
+
+            <div hidden={!Check_ErrorRegister} className={styles.error_message + ( (Check_ErrorRegister) ? ' ' + styles.actve_error_message : '' )}>
+               {
+                   (!SuccesRegistrater) ? <span>{ErrorRegister}</span> : <span className={styles.SuccesText}>{SuccesText}</span>
+               }
+                
+            </div>
+
             <h1>Регистрация</h1>
 
             <div className={styles.form}>

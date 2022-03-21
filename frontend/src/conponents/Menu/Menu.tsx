@@ -6,8 +6,12 @@ export default function Menu() {
 
   return (
     <div className={styles.Menu}>
-      <NavLink to='/'>Профиль</NavLink>
-      <NavLink to='/messages'>Сообщения</NavLink>
+      <NavLink to='/' style={({ isActive }) => ({
+                              color: isActive ? '#fff' : '',
+                              background: isActive ? 'rgba(0, 0, 0, 0.9)' : '',})}>Профиль</NavLink>
+      <NavLink to='/messages' style={({ isActive }) => ({
+                              color: isActive ? '#fff' : '',
+                              background: isActive ? 'rgba(0, 0, 0, 0.9)' : '',})}>Сообщения</NavLink>
     </div>
   );
 }

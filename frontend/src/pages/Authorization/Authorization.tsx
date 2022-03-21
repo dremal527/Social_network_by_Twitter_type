@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { useDispatch } from 'react-redux';
 import { NavLink } from 'react-router-dom';
-import { set_authorize } from '../../Redux/reducerAuthorize';
+import { set_authorize } from '../../Redux/reducers/reducerAuthorize';
 import styles from './Authorization.module.scss';
 
 export default function Authorization(){
@@ -16,6 +16,9 @@ export default function Authorization(){
     const [ErrorPasswordText, SetErrorPasswordText] = useState('');
 
     const [ValidForm, SetValidForm] = useState(false);
+
+    const [ErrorAuthorize, SetErrorAuthorize] = useState('');
+    const [Check_ErrorAuthorize, SetCheck_ErrorAuthorize] = useState(false);
 
     useEffect(()=>{
 
@@ -87,13 +90,20 @@ export default function Authorization(){
             document.cookie = `id=${query_authorize.data.id}, hash=${query_authorize.data.hash}; expires=${date}`;
             dispatch(set_authorize(true));
         }else{
-            console.log(query_authorize.error);
+            SetErrorAuthorize(query_authorize.error);
+            SetCheck_ErrorAuthorize(true);
+            setTimeout(()=>SetCheck_ErrorAuthorize(false), 3000);
         }
         
     }
 
     return(
         <div className={styles.auth_block}>
+
+            <div hidden={!Check_ErrorAuthorize} className={styles.error_message + ( (Check_ErrorAuthorize) ? ' ' + styles.actve_error_message : '' )}>
+                <span>{ErrorAuthorize}</span>
+            </div>
+
             <h1>Авторизация</h1>
             <div className={styles.form}>
                 <div className={styles.form_child}>

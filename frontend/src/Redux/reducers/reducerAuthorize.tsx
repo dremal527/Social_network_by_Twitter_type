@@ -1,5 +1,5 @@
-import {getCookie} from '../functions/getCookie';
-import {getFIO} from '../functions/getFIO';
+import {getCookie} from '../../functions/getCookie';
+import {getFIO} from '../../functions/getFIO';
 
 export function SetFIO (props:any, part_FIO:string){
     switch(part_FIO){

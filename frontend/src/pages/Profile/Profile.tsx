@@ -2,7 +2,7 @@ import React, {useState, useRef} from 'react';
 import styles from './Profile.module.scss';
 import Post from '../../conponents/Post/Post';
 import { useDispatch, useSelector } from 'react-redux';
-import {addPostReducer} from '../../Redux/reducerPost';
+import {addPostReducer} from '../../Redux/reducers/reducerPost';
 
 export default function Profile(props:any) {
     const dispatch = useDispatch();
